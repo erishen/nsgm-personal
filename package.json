@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nsgm-cli": "^2.1.9"
+    "nsgm-cli": "^2.1.10"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.20",

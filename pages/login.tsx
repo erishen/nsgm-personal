@@ -3,9 +3,10 @@ import _ from 'lodash'
 import { LoginContainer } from '../client/styled/common'
 // import getConfig from 'next/config'
 import React, { useState } from 'react'
-import { handleXSS } from '../client/utils/common'
+import { getLocalEnv } from '../client/utils/common'
 import { Input, Button, Form, Typography, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { directLogin } from '../client/utils/sso'
 
 const md = new MarkdownIt({
   html: true,
@@ -24,6 +25,9 @@ renderArr.push('Login')
 const Page = ({ html }) => {
   const [userName, setUserName] = useState("")
   const [userPassword, setUserPassword] = useState("")
+  const env = getLocalEnv()
+  const LOGIN_COOKIE_ID = env + '_cas_nsgm'
+  const LOGIN_COOKIE_USER = env + '_nsgm_user'
 
   const createMarkup = () => {
     return {
@@ -42,9 +46,15 @@ const Page = ({ html }) => {
         return;
       }
 
-      let locationHref = window.location.origin + "?ticket=XXX"
-      locationHref += "&name=" + btoa(handleXSS(userName + "," + userPassword))
-      window.location.href = locationHref
+      directLogin(userName, userPassword, (user) => {
+        if (user) {
+          window.location.href = window.location.origin;
+        }
+      }).then(result => {
+        if (!result.success) {
+          message.error(result.message);
+        }
+      });
     }
   }
 
