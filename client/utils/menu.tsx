@@ -11,6 +11,21 @@ export default [
     icon: <BookOutlined rev={undefined} />,
     subMenus: null
   },
+  {
+    // friend_manage_start
+    key: (++key).toString(),
+    text: 'friend',
+    url: '/friend/manage',
+    icon: <SolutionOutlined rev={undefined} />,
+    subMenus: [
+      {
+        key: key + '_1',
+        text: 'manage',
+        url: '/friend/manage'
+      }
+    ]
+    // friend_manage_end
+  },
   /*{
     key: (++key).toString(),
     text: '模板',

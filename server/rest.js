@@ -2,7 +2,7 @@ const express = require('express')
 const dayjs = require('dayjs')
 const sso = require('./apis/sso')
 //const template = require('./apis/template')
-
+const friend = require('./apis/friend')
 const router = express.Router()
 
 router.use((req, res, next) => {
@@ -14,7 +14,7 @@ router.use((req, res, next) => {
 router.use('/sso', sso)
 
 //router.use('/template', template)
-
+router.use('/friend', friend)
 router.get('/*', (req, res) => {
     res.statusCode = 200
     res.json({ name: 'REST' })
