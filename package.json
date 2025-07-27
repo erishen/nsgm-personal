@@ -1,0 +1,30 @@
+{
+  "name": "nsgm-personal-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nsgm dev",
+    "build": "nsgm build",
+    "start": "nsgm start",
+    "export": "nsgm export",
+    "init": "nsgm init",
+    "upgrade": "nsgm upgrade",
+    "create": "nsgm create",
+    "delete": "nsgm delete",
+    "deletedb": "nsgm deletedb",
+    "postversion": "git push && git push --tags",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nsgm-cli": "^2.1.9"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^20.19.9",
+    "@types/react": "^18.3.23",
+    "typescript": "^5.8.3"
+  }
+}
